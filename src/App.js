@@ -1,13 +1,18 @@
-import React from 'react'
-import Button from './Button'
+import React , {useState} from 'react'
 
 
 const App = () => {
-    const handleClickAction = () => {
-        console.log('Clicked from the parent')
+    const [value,updateValue] = useState(1);
+    console.log("before value" , value);
+    const handleClick = () => {
+        //in this callback funtion we can send the prev value to the function to check for the old value
+        updateValue((prevValue) => {
+            return prevValue + 1;
+        })
     }
+    console.log("after value" , value);
     return <>
-        <Button data = {{a:{b:{c:'a'}}}} clickAction = {handleClickAction}>Click me</Button> {/*  inside this component is a children */}
+        <button onClick={handleClick}>btn</button>
     </>;
 }
 
